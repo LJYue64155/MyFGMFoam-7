@@ -1,0 +1,13 @@
++ . /home/liujiayue/OpenFOAM/of7/liujiayue-7/applications/MyFGMFoam/src/bashrc
++ export LIB_FGM_SRC=/home/liujiayue/OpenFOAM/of7/liujiayue-7/applications/MyFGMFoam/src
++ export FGM_SOLVER_DIR=/home/liujiayue/OpenFOAM/of7/liujiayue-7/applications/MyFGMFoam/applications/solver
++ wmake -j ./thermophysicalModels/reactionThermo
++ wmake -j ./thermophysicalModels/chemistryModel
++ wmake -j ./thermophysicalModels/solidThermo
++ wmake -j ./thermophysicalModels/solidChemistryModel
++ wmake -j ./TurbulenceModels/turbulenceModels
++ wmake -j ./TurbulenceModels/compressible
++ wmake -j ./combustionModels
++ wmake -j ./fvOptions
++ wmake ../applications/utilities/FGMFoamPost/
++ wmake ../applications/solver/FGMFoam/

@@ -1,0 +1,55 @@
+{
+  "tasks": [
+    {
+      "type": "shell",
+      "label": "ofextension: build solver",
+      "command": [
+        "cd ${workspaceFolder};",
+        "source /OpenFOAM/of7/OpenFOAM-7/etc/bashrc WM_NCOMPROCS=2;",
+        "wmake 2>&1 | tee log.wmake_opt"
+      ],
+      "args": [],
+      "options": {},
+      "problemMatcher": [],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+
+    {
+      "type": "shell",
+      "label": "ofextension: debug solver",
+      "command": [
+        "cd ${workspaceFolder};",
+        "source /OpenFOAM/of7/OpenFOAM-7/etc/bashrc WM_NCOMPROCS=2; export WM_COMPILE_OPTION=Debug;",
+        "wmake 2>&1 | tee log.wmake_debug"
+      ],
+      "args": [],
+      "options": {},
+      "problemMatcher": []
+    },
+
+    {
+      "label": "FOAM: Run Solver",
+      "type": "shell",
+      "command": "bash",
+      "args": [
+          "-c",
+          "source /home/liujiayue/OpenFOAM/of7/liujiayue-7/etc/bashrc && MyFGMFoam"
+      ],
+      "options": {
+          // 关键：指定运行目录为你的算例文件夹
+          "cwd": "${workspaceFolder}/path/to/your/case"
+      },
+      "group": "test",
+      "presentation": {
+          "echo": true,
+          "reveal": "always",
+          "focus": false,
+          "panel": "shared"
+      }
+    }
+  ],
+  "version": "2.0.0"
+}

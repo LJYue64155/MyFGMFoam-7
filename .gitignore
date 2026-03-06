@@ -1,0 +1,46 @@
+# 1. 忽略巨网格和结果文件
+*.obj
+*.vtk
+*.stl
+*.foam
+
+# 2. 忽略处理器目录
+processor*
+
+# 3. 忽略日志和临时文件
+log.*
+*.log
+
+# 4. 忽略 OpenFOAM 常见的大文件目录
+postProcessing/
+processor*/
+VTK/
+
+# 5. 忽略备份文件
+*~
+*.bak
+
+# 6. 忽略计算结果
+# 感叹号表示放行
+[0-9]*
+!0/
+!0.orig/
+
+# 7. 忽略全部非代码文件夹
+/my_run/*
+/platforms/*
+Make/linux*/
+Make/darwin*/
+Make/solaris*/
+
+# 8. 忽略不作修改的代码文件
+/applications/FGMFoam/
+/applications/FGMFoam_PV_PVvar/
+/applications/FGMFoam_PV_PVvar_h/
+
+# 9. 放行部分文件
+!/my_run/MyFGM_example/
+
+# 10. 隐藏数据流文件
+*:Zone.Identifier
+*:Zone.Identifier:$DATA
