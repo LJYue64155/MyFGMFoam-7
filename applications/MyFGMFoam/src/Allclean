@@ -1,0 +1,25 @@
+#!/bin/sh
+cd ${0%/*} || exit 1    # run from this directory
+makeType=${1:-libso}
+# set -x
+
+source $HOME/OpenFOAM/of7/liujiayue-7/applications/MyFGMFoam/src/bashrc
+
+wclean $makeType ./thermophysicalModels/reactionThermo
+wclean $makeType ./thermophysicalModels/chemistryModel
+wclean $makeType ./thermophysicalModels/solidThermo
+wclean $makeType ./thermophysicalModels/solidChemistryModel
+
+wclean $makeType ./TurbulenceModels/turbulenceModels
+wclean $makeType ./TurbulenceModels/compressible
+
+wclean $makeType ./combustionModels
+
+wclean $makeType ./fvOptions
+
+wclean $makeType ../applications/utilities/FGMFoamPost/
+wclean $makeType ../applications/solver/FGMFoam/
+rm -rf $FOAM_USER_APPBIN/MyFGMFoam
+rm -rf $FOAM_USER_APPBIN/MyFGMFoamPost
+
+# ----------------------------------------------------------------- end-of-file

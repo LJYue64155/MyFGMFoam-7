@@ -1,0 +1,120 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2.3.0                                 |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      fvSolution;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+solvers
+{
+    "rho.*"
+    {
+        solver          diagonal;
+    }
+p PCG
+    {
+        preconditioner GAMG
+        {
+            tolerance        2e-6;
+            relTol           0.005;
+
+            nVcycles         2;
+
+            smoother         GaussSeidel;
+            nPreSweeps       0;
+            nPostSweeps      2;
+            nFinestSweeps    2;
+
+            cacheAgglomeration false;
+            nCellsInCoarsestLevel 300;
+            agglomerator     faceAreaPair;
+            mergeLevels      1;
+        };
+
+        tolerance        1e-7;
+        relTol           0.01;
+        maxIter          100;
+    };
+    pFinal PCG
+    {
+        preconditioner GAMG
+        {
+            tolerance        2e-5;
+            relTol           0.05;
+            nVcycles         2;
+            smoother         GaussSeidel;
+            nPreSweeps       0;
+            nPostSweeps      2;
+            nFinestSweeps    2;
+            cacheAgglomeration false;
+            nCellsInCoarsestLevel 300;
+            agglomerator     faceAreaPair;
+            mergeLevels      1;
+        };
+
+        tolerance        1e-6;
+        relTol           0;
+        maxIter          100;
+    };
+
+    "(U|h|Z|PV|k|epsilon|varZ|varPV)"
+    {
+        solver          GAMG;
+        tolerance       1e-6;
+        relTol          0.01;
+		maxIter         100;
+		
+		preconditioner  DIC;             // GAMG 的标准预条件器
+        smoother         GaussSeidel;      
+        nPreSweeps       0;
+        nPostSweeps      2;
+        nFinestSweeps    2;
+        cacheAgglomeration on;
+        nCellsInCoarsestLevel 50;       // 优化粗网格层数
+        agglomerator     faceAreaPair;
+        mergeLevels      1;
+    }
+
+    "(U|h|Z|PV|k|epsilon|varZ|varPV)Final"
+    {
+        $U;
+        relTol          0;
+    }
+
+    Yi
+    {
+        $hFinal;
+    }
+}
+
+relaxationFactors
+{
+    fields
+    {
+		p       0.2;
+        U       0.3; // 动量欠松弛，防止高雷诺数下的发散
+        k       0.3;
+        epsilon 0.3;
+    }
+}
+
+PIMPLE
+{
+    momentumPredictor yes;
+    nOuterCorrectors  1;
+    nCorrectors     2;
+    nNonOrthogonalCorrectors 1;
+}
+
+
+// ************************************************************************* //

@@ -1,0 +1,2 @@
+export LIB_FGM_SRC=$WM_PROJECT_USER_DIR/applications/MyFGMFoam/src
+export FGM_SOLVER_DIR=$WM_PROJECT_USER_DIR/applications/MyFGMFoam/applications/solver
