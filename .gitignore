@@ -10,6 +10,7 @@ processor*
 # 3. 忽略日志和临时文件
 log.*
 *.log
+*.err
 
 # 4. 忽略 OpenFOAM 常见的大文件目录
 postProcessing/
@@ -44,3 +45,6 @@ Make/solaris*/
 # 10. 隐藏数据流文件
 *:Zone.Identifier
 *:Zone.Identifier:$DATA
+
+.gitignore
+.vscode/*

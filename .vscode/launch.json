@@ -4,9 +4,8 @@
     // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-        
         {
-            "name": "(gdb) 启动",
+            "name": "(gdb) MyFGMFoam Debug in testcase",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceFolder}/platforms/linux64GccDPInt32Debug/bin/MyFGMFoam",  // "${workspaceFolder}/of-gdb.sh"  ${command:askForProgramName}
@@ -29,7 +28,86 @@
                     "ignoreFailures": true
                 },
             ],
+        },
+        {
+            "name": "(gdb) MyDebug",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${input:selectSolver}",  // "${workspaceFolder}/of-gdb.sh"  ${command:askForProgramName}
+            "args": [],  // -parallel
+            "stopAtEntry": true,
+            "cwd": "${input:selectCaseDir}",  //${fileDirname:1}
+            "environment": [
+                  {"name": "ENV", "value": "${env:ENV}"}
+            ],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "setupCommands": [
+                {
+                    "description": "为 gdb 启用整齐打印",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "将反汇编风格设置为 Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                },
+            ],
+        },
+        {
+            "name": "(gdb) Debug",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${command:askForProgramName}",  // "${workspaceFolder}/of-gdb.sh"  ${command:askForProgramName}
+            "args": [
+                "${input:selectSolver}"
+            ],  // -parallel
+            "stopAtEntry": true,
+            "cwd": "${fileDirname:1}",  //${fileDirname:1}
+            "environment": [
+                  {"name": "ENV", "value": "${env:ENV}"}
+            ],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "miDebuggerPath": "/usr/bin/gdb",
+            "setupCommands": [
+                {
+                    "description": "为 gdb 启用整齐打印",
+                    "text": "-enable-pretty-printing",
+                    "ignoreFailures": true
+                },
+                {
+                    "description": "将反汇编风格设置为 Intel",
+                    "text": "-gdb-set disassembly-flavor intel",
+                    "ignoreFailures": true
+                },
+            ],
             //"preLaunchTask": "source ~/OpenFOAM/of7/OpenFOAM-7/etc/bashrc WM_NCOMPROCS=2"
         },
-    ]
+    ],
+    "inputs": [
+        {
+            "id": "selectSolver",
+            "type": "pickString",
+            "description": "选择求解器",
+            "options": [
+                "${workspaceFolder}/platforms/linux64GccDPInt32Debug/bin/MyFGMFoam",
+                "${workspaceFolder}/platforms/linux64GccDPInt32Debug/bin/MyFGMFoamPost",
+                "${workspaceFolder}/platforms/linux64GccDPInt32Debug/bin/FGMFoam",
+            ],
+            "default": "${workspaceFolder}/platforms/linux64GccDPInt32Debug/bin/MyFGMFoam"
+        },
+        {
+            "id": "selectCaseDir",
+            "type": "pickString",
+            "description": "选择算例目录",
+            "options": [
+                "/home/liujiayue/OpenFOAM/of7/liujiayue-7/my_run/testcase",
+                "/home/liujiayue/OpenFOAM/of7/liujiayue-7/my_run/FlameD_MyFGM",
+                "/home/liujiayue/OpenFOAM/of7/liujiayue-7/my_run/01_case/Sandia_FlameD/case02_MyFGM_table-cond02_mesh5k_scheme2_T3.86s_continueFromC"
+            ],
+            "default": "/home/liujiayue/OpenFOAM/of7/liujiayue-7/my_run/testcase"
+        }
 }

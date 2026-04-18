@@ -2,11 +2,13 @@
   "tasks": [
     {
       "type": "shell",
-      "label": "ofextension: build solver",
+      "label": "of-7: opt build MyFGMFoam",
       "command": [
-        "cd ${workspaceFolder};",
+        "cd ${workspaceFolder}/applications/MyFGMFoam/src;",
         "source /OpenFOAM/of7/OpenFOAM-7/etc/bashrc WM_NCOMPROCS=2;",
-        "wmake 2>&1 | tee log.wmake_opt"
+        "export LIB_FGM_SRC=$WM_PROJECT_USER_DIR/applications/MyFGMFoam/src;",
+        "export FGM_SOLVER_DIR=$WM_PROJECT_USER_DIR/applications/MyFGMFoam/applications/solver;",
+        "Allwmake -j -s -q 2>&1 | tee allwmake.log"
       ],
       "args": [],
       "options": {},
@@ -19,37 +21,19 @@
 
     {
       "type": "shell",
-      "label": "ofextension: debug solver",
+      "label": "of-7: debug build MyFGMFoam",
       "command": [
-        "cd ${workspaceFolder};",
-        "source /OpenFOAM/of7/OpenFOAM-7/etc/bashrc WM_NCOMPROCS=2; export WM_COMPILE_OPTION=Debug;",
-        "wmake 2>&1 | tee log.wmake_debug"
+        "cd ${workspaceFolder}/applications/MyFGMFoam/src;",
+        "source /OpenFOAM/of7/OpenFOAM-7/etc/bashrc WM_NCOMPROCS=2;",
+        "export WM_COMPILE_OPTION=Debug;",
+        "export LIB_FGM_SRC=$WM_PROJECT_USER_DIR/applications/MyFGMFoam/src;",
+        "export FGM_SOLVER_DIR=$WM_PROJECT_USER_DIR/applications/MyFGMFoam/applications/solver;",
+        "Allwmake -j -s -q 2>&1 | tee allwmake.log"
       ],
       "args": [],
       "options": {},
       "problemMatcher": []
     },
-
-    {
-      "label": "FOAM: Run Solver",
-      "type": "shell",
-      "command": "bash",
-      "args": [
-          "-c",
-          "source /home/liujiayue/OpenFOAM/of7/liujiayue-7/etc/bashrc && MyFGMFoam"
-      ],
-      "options": {
-          // 关键：指定运行目录为你的算例文件夹
-          "cwd": "${workspaceFolder}/path/to/your/case"
-      },
-      "group": "test",
-      "presentation": {
-          "echo": true,
-          "reveal": "always",
-          "focus": false,
-          "panel": "shared"
-      }
-    }
   ],
   "version": "2.0.0"
 }
