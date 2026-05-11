@@ -144,8 +144,8 @@ public:
         //- Return const dictionary of the model
         inline const dictionary& coeffs() const;
 
-	//- For the convinient use of SourcePV()
-	virtual tmp<volScalarField> SourcePV() const = 0;
+        //- For the convinient use of SourceYc()
+        virtual tmp<volScalarField> SourceYc() const = 0;
 
         //- Correct combustion rate
         virtual void correct() = 0;

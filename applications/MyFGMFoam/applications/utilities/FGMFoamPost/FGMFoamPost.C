@@ -117,25 +117,25 @@ int main(int argc, char *argv[])
     Switch useProgressVariableVariance_(coeffs_.lookup("useProgressVariableVariance"));
 
     //- 2D table for minimum and maximum progress variable
-    scalarList y(2, 0.0);
+    scalarList Params2d(2, 0.0);
     
     //- 4D independent variables (Z, varZ, PV, varPV)
-    scalarList x(4, 0.0);
+    scalarList Params4d(4, 0.0);
     
-    double Zeta, ZetaC;
+    double Zvar, Cvar;
 
 
-    List<List<int> > ubIF(mesh.cells().size()), ubPVIF(mesh.cells().size());
-    List<scalarList> posIF(mesh.cells().size()), posPVIF(mesh.cells().size());
-    List<List<int> > ubP(mesh.faces().size()), ubPVP(mesh.faces().size());
-    List<scalarList> posP(mesh.faces().size()), posPVP(mesh.faces().size());
+    List<List<int> > ubParams4dIF(mesh.cells().size()), ubParams2dIF(mesh.cells().size());
+    List<scalarList> posParams4dIF(mesh.cells().size()), posParams2dIF(mesh.cells().size());
+    List<List<int> > ubParams4dBF(mesh.faces().size()), ubParams2dBF(mesh.faces().size());
+    List<scalarList> posParams4dBF(mesh.faces().size()), posParams2dBF(mesh.faces().size());
 
     //- Minimum and Maximum unscaled progress variable
-    scalar PVMinCells, PVMaxCells, pPVMin, pPVMax;
+    scalar YcMinCells, YcMaxCells, YcMinPatchs, YcMaxPatchs;
 
     //- Scaled progress variable   
-    scalar sPVCells, psPV;
-    scalar sVarPVCells(0.0), psVarPV(0.0);  
+    scalar Cmean;
+    scalar Cfluc(0.0);
 
     //- Scale progress variable and its variance
     scalar fc, gc, hc;
@@ -143,18 +143,18 @@ int main(int argc, char *argv[])
 
     wordList tableNames(thermo.composition().species());
     tableNames.append("T");   //--- Read 'T' table
-    tableNames.append("SourcePV");
+    tableNames.append("SourceYc");
     Foam::combustionModels::tableSolver solver(Foam::combustionModels::tableSolver(mesh, tableNames));
     
     hashedWordList PVtableNames;
     PVtableNames.clear();
-    PVtableNames.append("PVmin");
-    PVtableNames.append("PVmax");
+    PVtableNames.append("Ycmin");
+    PVtableNames.append("Ycmax");
     if (useProgressVariableVariance_)
     {
-      PVtableNames.append("Yu2I");
-      PVtableNames.append("YuYbI");
-      PVtableNames.append("Yb2I");
+        PVtableNames.append("Yu2I");
+        PVtableNames.append("YuYbI");
+        PVtableNames.append("Yb2I");
     }
 
     Foam::combustionModels::PVtableSolver PVsolver(Foam::combustionModels::PVtableSolver(mesh, PVtableNames));
@@ -168,11 +168,11 @@ int main(int argc, char *argv[])
         runTime.setTime(timeDirs[timeI], timeI);
         Info << nl << "Time = " << runTime.timeName() << nl << endl;
 
-        volScalarField Z
+        volScalarField ZmeanCells
         (
             IOobject
             (
-                "Z",
+                "Zmean",
                 runTime.timeName(),
                 mesh,
                 IOobject::MUST_READ,
@@ -180,11 +180,11 @@ int main(int argc, char *argv[])
             ),
             mesh
         );
-        volScalarField varZ
+        volScalarField ZflucCells
         (
             IOobject
             (
-                "varZ",
+                "Zfluc",
                 runTime.timeName(),
                 mesh,
                 IOobject::MUST_READ,
@@ -192,11 +192,11 @@ int main(int argc, char *argv[])
             ),
             mesh
         );
-        volScalarField PV
+        volScalarField YcmeanCells
         (
             IOobject
             (
-                "PV",
+                "Ycmean",
                 runTime.timeName(),
                 mesh,
                 IOobject::MUST_READ,
@@ -205,11 +205,11 @@ int main(int argc, char *argv[])
             mesh
         );
 
-        volScalarField varPV
+        volScalarField YcflucCells
         (
             IOobject
             (
-                "varPV",
+                "Ycfluc",
                 runTime.timeName(),
                 mesh,
                 IOobject::MUST_READ,
@@ -221,130 +221,132 @@ int main(int argc, char *argv[])
        // Interpolate for internal Field
        forAll(Y, i)
        {
-    	  scalarField& YCells = Y[i].ref();   //internalField(); senbin
+            scalarField& YCells = Y[i].ref();   //internalField(); senbin
 
-          forAll(Z, cellI)
-          {
-        	 if (i == 0)  // Zeta and scaledPV determined once is enough
-        	 {
-		   
-		   //- Scaled varZ (Zeta) is stored in the pre-integrated FGM table as an independent variable
-                   Zeta = varZ[cellI]/max(Z[cellI]*(1 - Z[cellI]), SMALL);
+            forAll(ZmeanCells, cellI)
+            {
+                if (i == 0)  // Zeta and scaledPV determined once is enough
+                {
+            
+                    //- Scaled varZ (Zeta) is stored in the pre-integrated FGM table as an independent variable
+                    Zvar = ZflucCells[cellI]/max(ZmeanCells[cellI]*(1 - ZmeanCells[cellI]), SMALL);
 
-		   //- Calculate scaled progress variable   
-		   y[0] = max(min(Zeta, 0.99), 0.0);
-                   y[1] = max(min(Z[cellI], 1.0), 0.0);
-		   
-                   ubPVIF[cellI] = PVsolver.upperBounds(y);
-                   posPVIF[cellI] = PVsolver.position(ubPVIF[cellI], y);
-      
-                   //- Update minimum and maximum unscaled progress variable
-                   PVMinCells = PVsolver.interpolate(ubPVIF[cellI], posPVIF[cellI], 0);
-                   PVMaxCells = PVsolver.interpolate(ubPVIF[cellI], posPVIF[cellI], 1);
-      
-                   //- Update scalaed progress variable
-                   sPVCells = (PV[cellI] - PVMinCells)/max((PVMaxCells - PVMinCells),SMALL);
+                    //- Calculate scaled progress variable   
+                    Params2d[0] = max(min(Zvar, 0.99), 0.0);
+                    Params2d[1] = max(min(ZmeanCells[cellI], 1.0), 0.0);
+            
+                    ubParams2dIF[cellI] = PVsolver.upperBounds(Params2d);
+                    posParams2dIF[cellI] = PVsolver.position(ubParams2dIF[cellI], Params2d);
+        
+                    //- Update minimum and maximum unscaled progress variable
+                    YcMinCells = PVsolver.interpolate(ubParams2dIF[cellI], posParams2dIF[cellI], 0);
+                    YcMaxCells = PVsolver.interpolate(ubParams2dIF[cellI], posParams2dIF[cellI], 1);
+        
+                    //- Update scalaed progress variable
+                    Cmean = (YcmeanCells[cellI] - YcMinCells)/max((YcMaxCells - YcMinCells), SMALL);
 
-                   //- How about the progress variable variance?
-		   if (useProgressVariableVariance_)
-		   {
-		     //- calculate scaled progress variable variance from unscaled propress variance
-		     //- Reference 1: A progress variable approach based on premixed flamelets for turbulent combustion modeling, B.A. Albrecht, W.J.S.Ramaekers et al
-		     //- Eq.(10) and Eq.(17)
-		     //- Reference 2: A premixed Flamelet-PDF Model for Biomass Combustion in a Grate Furnace, Energy & Fuels, 2008, Albrecht, Oijen et al
-		     //- Eq.(10) and Eq.(11)
-		     
-		     Yu2I = PVsolver.interpolate(ubPVIF[cellI], posPVIF[cellI], 2);
-		     YuYbI = PVsolver.interpolate(ubPVIF[cellI], posPVIF[cellI], 3);
-		     Yb2I = PVsolver.interpolate(ubPVIF[cellI], posPVIF[cellI], 4);
-		     
-		     fc = Yu2I; gc = YuYbI - Yu2I; hc = Yb2I - 2*YuYbI + Yu2I;
-                     sVarPVCells =  (varPV[cellI] + sqr(PV[cellI]) - fc - 2*gc*sPVCells)/max(hc, SMALL) - sqr(sPVCells); 
-		   }
-		   else
-		   {
-		     sVarPVCells = 0.0;
-		   }
+                    //- How about the progress variable variance?
+                    if (useProgressVariableVariance_)
+                    {
+                        //- calculate scaled progress variable variance from unscaled propress variance
+                        //- Reference 1: A progress variable approach based on premixed flamelets for turbulent combustion modeling, B.A. Albrecht, W.J.S.Ramaekers et al
+                        //- Eq.(10) and Eq.(17)
+                        //- Reference 2: A premixed Flamelet-PDF Model for Biomass Combustion in a Grate Furnace, Energy & Fuels, 2008, Albrecht, Oijen et al
+                        //- Eq.(10) and Eq.(11)
+                        
+                        Yu2I = PVsolver.interpolate(ubParams2dIF[cellI], posParams2dIF[cellI], 2);
+                        YuYbI = PVsolver.interpolate(ubParams2dIF[cellI], posParams2dIF[cellI], 3);
+                        Yb2I = PVsolver.interpolate(ubParams2dIF[cellI], posParams2dIF[cellI], 4);
+                        
+                        fc = Yu2I; gc = YuYbI - Yu2I; hc = Yb2I - 2*YuYbI + Yu2I;
+                        Cfluc = (YcflucCells[cellI] + sqr(YcmeanCells[cellI]) - fc - 2*gc*Cmean)/max(hc, SMALL) - sqr(Cmean); 
+                    }
+                    else
+                    {
+                        Cfluc = 0.0;
+                    }
 
-                   ZetaC = sVarPVCells/max(sPVCells*(1 - sPVCells), SMALL);
+                    Cvar = Cfluc/max(Cmean*(1 - Cmean), SMALL);
 
-                   x[0] = max(min(ZetaC, 0.99), 0.0);
-                   x[1] = max(min(sPVCells, 1.0), 0.0);
-		   x[2] = max(min(Zeta, 0.99), 0.0);
-                   x[3] = max(min(Z[cellI], 1.0), 0.0);
-		   //- find up-bound and pos for table interpolation
-                   ubIF[cellI] = solver.upperBounds(x);
-                   posIF[cellI] = solver.position(ubIF[cellI], x);
+                    Params4d[0] = max(min(Cvar, 0.99), 0.0);
+                    Params4d[1] = max(min(Cmean, 1.0), 0.0);
+                    Params4d[2] = max(min(Zvar, 0.99), 0.0);
+                    Params4d[3] = max(min(ZmeanCells[cellI], 1.0), 0.0);
 
-		   YCells[cellI] = solver.interpolate(ubIF[cellI], posIF[cellI], i);
-        	 }
-                 //- Update species
-        	 YCells[cellI] = solver.interpolate(ubIF[cellI], posIF[cellI], i); 
-          }
+                    //- find up-bound and pos for table interpolation
+                    ubParams4dIF[cellI] = solver.upperBounds(Params4d);
+                    posParams4dIF[cellI] = solver.position(ubParams4dIF[cellI], Params4d);
+
+                    // YCells[cellI] = solver.interpolate(ubParams4dIF[cellI], posParams4dIF[cellI], i);
+                }
+
+                //- Update species
+                YCells[cellI] = solver.interpolate(ubParams4dIF[cellI], posParams4dIF[cellI], i); 
+            }
        }
 
        // Interpolate for patches
-       forAll(Z.boundaryField(), patchi)    // Changed L.Ma, 24-06-2014
+       forAll(ZmeanCells.boundaryField(), patchi)    // Changed L.Ma, 24-06-2014
        {
-          const fvPatchScalarField& pvarPV = varPV.boundaryField()[patchi];
-	  const fvPatchScalarField& pPV = PV.boundaryField()[patchi];
-          const fvPatchScalarField& pvarZ = varZ.boundaryField()[patchi];
-          const fvPatchScalarField& pZ = Z.boundaryField()[patchi];
+            const fvPatchScalarField& pYcfluc = YcflucCells.boundaryField()[patchi];
+            const fvPatchScalarField& pYcmean = YcmeanCells.boundaryField()[patchi];
+            const fvPatchScalarField& pZfluc = ZflucCells.boundaryField()[patchi];
+            const fvPatchScalarField& pZmean = ZmeanCells.boundaryField()[patchi];
 
-          forAll(Y, i)
-          {
-              fvPatchScalarField& pY = Y[i].boundaryFieldRef()[patchi];
+            forAll(Y, i)
+            {
+                fvPatchScalarField& pY = Y[i].boundaryFieldRef()[patchi];
 
-              forAll(pY , facei)
-              {
-             	 if (i == 0)
-             	 {
-                      Zeta = pvarZ[facei]/max(pZ[facei]*(1 - pZ[facei]), SMALL);
-                     //- Calculate scaled progress variable 
-                     y[0] = max(min(Zeta, 0.99), 0.0);
-                     y[1] = max(min(pZ[facei], 1.0), 0.0);
-      
-                     ubPVP[facei] = PVsolver.upperBounds(y);
-                     posPVP[facei] = PVsolver.position(ubPVP[facei], y);
-      
-                     //- Update minimum and maximum unscaled progress variable
-                     pPVMin = PVsolver.interpolate(ubPVP[facei], posPVP[facei], 0);
-                     pPVMax = PVsolver.interpolate(ubPVP[facei], posPVP[facei], 1);
-      
-                     //- Update scalaed progress variable
-                     psPV = (pPV[facei] - pPVMin)/max((pPVMax - pPVMin),SMALL);
+                forAll(pY , facei)
+                {
+                    if (i == 0)
+                    {
+                        Zvar = pZfluc[facei]/max(pZmean[facei]*(1 - pZmean[facei]), SMALL);
+                        //- Calculate scaled progress variable 
+                        Params2d[0] = max(min(Zvar, 0.99), 0.0);
+                        Params2d[1] = max(min(pZmean[facei], 1.0), 0.0);
+        
+                        ubParams2dBF[facei] = PVsolver.upperBounds(Params2d);
+                        posParams2dBF[facei] = PVsolver.position(ubParams2dBF[facei], Params2d);
+        
+                        //- Update minimum and maximum unscaled progress variable
+                        YcMinPatchs = PVsolver.interpolate(ubParams2dBF[facei], posParams2dBF[facei], 0);
+                        YcMaxPatchs = PVsolver.interpolate(ubParams2dBF[facei], posParams2dBF[facei], 1);
+        
+                        //- Update scalaed progress variable
+                        Cmean = (pYcmean[facei] - YcMinPatchs)/max((YcMaxPatchs - YcMinPatchs), SMALL);
 
-                     //- How about the progress variable variance?
-		     if (useProgressVariableVariance_)
-		     {    
-		       Yu2I = PVsolver.interpolate(ubPVP[facei], posPVP[facei], 2);
-		       YuYbI = PVsolver.interpolate(ubPVP[facei], posPVP[facei], 3);
-		       Yb2I = PVsolver.interpolate(ubPVP[facei], posPVP[facei], 4);
-		       
-		       fc = Yu2I; gc = YuYbI - Yu2I; hc = Yb2I - 2*YuYbI + Yu2I;
-                       psVarPV =  (pvarPV[facei] + sqr(pPV[facei]) - fc - 2*gc*psPV)/max(hc, SMALL) - sqr(psPV); 
-		     }
-		     else
-		     {
-		       psVarPV = 0.0;
-		     }
+                        //- How about the progress variable variance?
+                        if (useProgressVariableVariance_)
+                        {    
+                            Yu2I = PVsolver.interpolate(ubParams2dBF[facei], posParams2dBF[facei], 2);
+                            YuYbI = PVsolver.interpolate(ubParams2dBF[facei], posParams2dBF[facei], 3);
+                            Yb2I = PVsolver.interpolate(ubParams2dBF[facei], posParams2dBF[facei], 4);
+                            
+                            fc = Yu2I; gc = YuYbI - Yu2I; hc = Yb2I - 2*YuYbI + Yu2I;
+                            Cfluc =  (pYcfluc[facei] + sqr(pYcmean[facei]) - fc - 2*gc*Cmean)/max(hc, SMALL) - sqr(Cmean); 
+                        }
+                        else
+                        {
+                            Cfluc = 0.0;
+                        }
 
-                     ZetaC = psVarPV/max(psPV*(1 - psPV), SMALL);
+                        Cvar = Cfluc/max(Cmean*(1 - Cmean), SMALL);
 
-                     x[0] = max(min(ZetaC, 1.0), 0.0);
-		     x[1] = max(min(psPV, 1.0), 0.0);
-                     x[2] = max(min(Zeta, 0.99), 0.0);
-                     x[3] = max(min(pZ[facei], 1.0), 0.0);
-		     
-                     ubP[facei] = solver.upperBounds(x);
-                     posP[facei] = solver.position(ubP[facei], x);
+                        Params4d[0] = max(min(Cvar, 1.0), 0.0);
+                        Params4d[1] = max(min(Cmean, 1.0), 0.0);
+                        Params4d[2] = max(min(Zvar, 0.99), 0.0);
+                        Params4d[3] = max(min(pZmean[facei], 1.0), 0.0);
+                
+                        ubParams4dBF[facei] = solver.upperBounds(Params4d);
+                        posParams4dBF[facei] = solver.position(ubParams4dBF[facei], Params4d);
 
-		     pY[facei] = solver.interpolate(ubP[facei], posP[facei], i);
-             	 }
-                 //- update speces
-                 pY[facei] = solver.interpolate(ubP[facei], posP[facei], i);
-             }
-          }
+                        // pY[facei] = solver.interpolate(ubParams4dBF[facei], posParams4dBF[facei], i);
+                    }
+                    //- update speces
+                    pY[facei] = solver.interpolate(ubParams4dBF[facei], posParams4dBF[facei], i);
+                }
+            }
        }
   
 

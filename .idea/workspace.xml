@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BackendCodeEditorMiscSettings">
+    <option name="/Default/Environment/Hierarchy/GeneratedFilesCacheKey/Timestamp/@EntryValue" value="3" type="long" />
+    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
+    <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
+    <option name="/Default/Housekeeping/OptionsDialog/SelectedPageId/@EntryValue" value="CppGeneralOptions" type="string" />
+    <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
+  </component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
+  <component name="CMakeProjectFlavorService">
+    <option name="flavorId" value="CMakePlainProjectFlavor" />
+  </component>
+  <component name="CMakeReloadState">
+    <option name="reloaded" value="true" />
+  </component>
+  <component name="CMakeRunConfigurationManager">
+    <generated>
+      <config projectName="liujiayue-7" targetName="MyFGMFoam" />
+      <config projectName="liujiayue-7" targetName="ignore_build" />
+    </generated>
+  </component>
+  <component name="CMakeSettings">
+    <configurations>
+      <configuration PROFILE_NAME="Debug-WSL" ENABLED="true" CONFIG_NAME="Debug" TOOLCHAIN_NAME="WSL">
+        <ADDITIONAL_GENERATION_ENVIRONMENT>
+          <envs>
+            <env name="myfgm7" value="SHELL=/bin/bash WM_COMPILER=Gcc FOAM_SETTINGS=FOAMY_HEX_MESH=yes ParaView_INCLUDE_DIR=/home/liujiayue/OpenFOAM/of7/ThirdParty-7/platforms/linux64Gcc/ParaView-5.6.0/include/paraview-5.6 WSL2_GUI_APPS_ENABLED=1 WSL_DISTRO_NAME=Ubuntu WT_SESSION=04d820d6-7f42-44f3-8844-3e1e6bf6dc09 FOAM_MPI=openmpi-system ParaView_GL=mesa WM_PRECISION_OPTION=DP WM_PROJECT_USER_DIR=/home/liujiayue/OpenFOAM/of7/liujiayue-7 WM_MPLIB=SYSTEMOPENMPI FOAM_RUN=/home/liujiayue/OpenFOAM/of7/liujiayue-7/run FOAM_EXT_LIBBIN=/home/liujiayue/OpenFOAM/of7/ThirdParty-7/platforms/linux64GccDPInt32/lib NAME=DESKTOP-NET2P3U PWD=/home/liujiayue FOAMY_HEX_MESH=yes LOGNAME=liujiayue WM_OPTIONS=linux64GccDPInt32Debug WM_ARCH=linux64 ParaView_MAJOR=5.6 FOAM_TUTORIALS=/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/tutorials WM_LABEL_SIZE=32 WM_PROJECT=OpenFOAM FOAM_APPBIN=/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/platforms/linux64GccDPInt32Debug/bin WM_THIRD_PARTY_DIR=/home/liujiayue/OpenFOAM/of7/ThirdParty-7 HOME=/home/liujiayue LANG=C.UTF-8 WSL_INTEROP=/run/WSL/434_interop WM_LABEL_OPTION=Int32 WM_CC=gcc LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36: WM_CFLAGS=-m64 -fPIC FOAM_JOB_DIR=/home/liujiayue/OpenFOAM/of7/jobControl FOAM_LIBBIN=/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/platforms/linux64GccDPInt32Debug/lib WM_LINK_LANGUAGE=c++ WAYLAND_DISPLAY=wayland-0 ParaView_VERSION=5.6.0 ParaView_DIR=/home/liujiayue/OpenFOAM/of7/ThirdParty-7/platforms/linux64Gcc/ParaView-5.6.0 FOAM_ETC=/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/etc FGM_SOLVER_DIR=/home/liujiayue/OpenFOAM/of7/liujiayue-7/applications/MyFGMFoam/applications/solver FOAM_UTILITIES=/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/applications/utilities FOAM_SITE_LIBBIN=/home/liujiayue/OpenFOAM/of7/site/7/platforms/linux64GccDPInt32Debug/lib WM_OSTYPE=POSIX WM_PROJECT_VERSION=7 LESSCLOSE=/usr/bin/lesspipe %s %s WM_DIR=/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/wmake TERM=xterm-256color FOAM_SITE_APPBIN=/home/liujiayue/OpenFOAM/of7/site/7/platforms/linux64GccDPInt32Debug/bin WM_ARCH_OPTION=64 LESSOPEN=| /usr/bin/lesspipe %s USER=liujiayue WM_CXXFLAGS=-m64 -fPIC -std=c++0x MPI_ARCH_PATH=/usr/lib/x86_64-linux-gnu/openmpi WM_PROJECT_INST_DIR=/home/liujiayue/OpenFOAM/of7 FOAM_SRC=/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/src DISPLAY=:0 SHLVL=1 FOAM_USER_LIBBIN=/home/liujiayue/OpenFOAM/of7/liujiayue-7/platforms/linux64GccDPInt32Debug/lib FOAM_APP=/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/applications WM_LDFLAGS=-m64 WM_CXX=g++ LD_LIBRARY_PATH=/home/liujiayue/OpenFOAM/of7/ThirdParty-7/platforms/linux64Gcc/gperftools-svn/lib:/home/liujiayue/OpenFOAM/of7/ThirdParty-7/platforms/linux64Gcc/ParaView-5.6.0/lib/paraview-5.6:/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/platforms/linux64GccDPInt32Debug/lib/openmpi-system:/home/liujiayue/OpenFOAM/of7/ThirdParty-7/platforms/linux64GccDPInt32/lib/openmpi-system:/usr/lib/x86_64-linux-gnu/openmpi/lib:/home/liujiayue/OpenFOAM/of7/liujiayue-7/platforms/linux64GccDPInt32Debug/lib:/home/liujiayue/OpenFOAM/of7/site/7/platforms/linux64GccDPInt32Debug/lib:/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/platforms/linux64GccDPInt32Debug/lib:/home/liujiayue/OpenFOAM/of7/ThirdParty-7/platforms/linux64GccDPInt32/lib:/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/platforms/linux64GccDPInt32Debug/lib/dummy XDG_RUNTIME_DIR=/mnt/wslg/runtime-dir WM_COMPILE_OPTION=Debug FOAM_INST_DIR=/home/liujiayue/OpenFOAM/of7 WSLENV=WT_SESSION:WT_PROFILE_ID: MPI_BUFFER_SIZE=20000000 ParaView_TYPE=ThirdParty FOAM_SOLVERS=/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/applications/solvers WM_PROJECT_DIR=/home/liujiayue/OpenFOAM/of7/OpenFOAM-7 LIB_FGM_SRC=/home/liujiayue/OpenFOAM/of7/liujiayue-7/applications/MyFGMFoam/src WM_COMPILER_TYPE=system XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop FOAM_USER_APPBIN=/home/liujiayue/OpenFOAM/of7/liujiayue-7/platforms/linux64GccDPInt32Debug/bin PATH=/home/liujiayue/OpenFOAM/of7/ThirdParty-7/platforms/linux64Gcc/gperftools-svn/bin:/home/liujiayue/OpenFOAM/of7/ThirdParty-7/platforms/linux64Gcc/ParaView-5.6.0/bin:/home/liujiayue/OpenFOAM/of7/liujiayue-7/platforms/linux64GccDPInt32Debug/bin:/home/liujiayue/OpenFOAM/of7/site/7/platforms/linux64GccDPInt32Debug/bin:/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/platforms/linux64GccDPInt32Debug/bin:/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/bin:/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/wmake:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/d/Program:Files/NVIDIA:GPU:Computing:Toolkit/CUDA/v12.4/bin:/mnt/d/Program:Files/NVIDIA:GPU:Computing:Toolkit/CUDA/v12.4/libnvvp:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program:Files/Git/cmd:/mnt/d/Program:Files/MATLAB/R2022a/bin:/mnt/d/anaconda3/Library/bin/:/mnt/d/anaconda3/Scripts/:/mnt/d/anaconda3/:/mnt/d/anaconda3/Library/usr/bin/:/mnt/d/anaconda3/Library/mingw-w64/bin:/mnt/c/Program:Files/NVIDIA:Corporation/Nsight:Compute:2024.1.1/:/mnt/c/Program:Files:(x86)/NVIDIA:Corporation/PhysX/Common:/mnt/c/Program:Files/NVIDIA:Corporation/NVIDIA:NvDLISR:/mnt/c/Program:Files:(x86)/Windows:Kits/8.1/Windows:Performance:Toolkit/:/mnt/c/Program:Files:(x86)/Microsoft:Visual:Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64:/mnt/d/ProgramFiles/Docker/resources/bin:/mnt/c/Users/LJYue/AppData/Local/Microsoft/WindowsApps:/mnt/d/Program:Files/JetBrains/PyCharm:Community:Edition:2024.3.1.1/bin:/mnt/d/Users/LJYue/AppData/Local/Programs/Microsoft:VS:Code/bin:/mnt/d/Program:Files:(x86)/REFPROP/:/mnt/d/Users/LJYue/AppData/Local/Programs/CLion:2026.1.1/bin:/snap/bin PV_PLUGIN_PATH=/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/platforms/linux64GccDPInt32Debug/lib/paraview-5.6 WM_COMPILER_LIB_ARCH=64 FOAM_SIGFPE= HOSTTYPE=x86_64 PULSE_SERVER=unix:/mnt/wslg/PulseServer WT_PROFILE_ID={b72fede2-4f76-45b7-bfa2-9d7971a822dc} _=/usr/bin/env" />
+          </envs>
+        </ADDITIONAL_GENERATION_ENVIRONMENT>
+      </configuration>
+    </configurations>
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="cc4864ee-c9b7-4bca-9493-0e4be4c51a3b" name="更改" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/editor.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/liujiayue-7.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.vscode/c_cpp_properties.json" beforeDir="false" afterPath="$PROJECT_DIR$/.vscode/c_cpp_properties.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/applications/MyFGMFoam/applications/utilities/FGMFoamPost/FGMFoamPost.C" beforeDir="false" afterPath="$PROJECT_DIR$/applications/MyFGMFoam/applications/utilities/FGMFoamPost/FGMFoamPost.C" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/applications/MyFGMFoam/applications/utilities/FGMFoamPost/Make/linux64GccDPInt32Debug/FGMFoamPost.o" beforeDir="false" afterPath="$PROJECT_DIR$/applications/MyFGMFoam/applications/utilities/FGMFoamPost/Make/linux64GccDPInt32Debug/FGMFoamPost.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/applications/MyFGMFoam/src/TurbulenceModels/turbulenceModels/turbulenceModel.C" beforeDir="false" afterPath="$PROJECT_DIR$/applications/MyFGMFoam/src/TurbulenceModels/turbulenceModels/turbulenceModel.C" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/applications/MyFGMFoam/src/combustionModels/Make/linux64GccDPInt32Debug/FGMModel/FGMModels.o" beforeDir="false" afterPath="$PROJECT_DIR$/applications/MyFGMFoam/src/combustionModels/Make/linux64GccDPInt32Debug/FGMModel/FGMModels.o" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/0/PV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/0/T" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/0/U" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/0/Z" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/0/alphat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/0/epsilon" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/0/k" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/0/nut" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/0/omega" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/0/p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/0/scaledPV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/0/sourcePV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/0/varPV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/0/varZ" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/Allrun" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/chemkin/reactions.inp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/chemkin/therm.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/chemkin/transportProperties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/constant/LESProperties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/constant/PVtableProperties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/constant/chemistryProperties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/constant/combustionProperties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/constant/g" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/constant/tableProperties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/constant/thermophysicalProperties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/constant/transportProperties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/constant/turbulenceProperties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/readme" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/system/blockMeshDict" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/system/controlDict" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/system/fvSchemes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/system/fvSolution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia Flame/system/setFieldsDict" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/0/PV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/0/T" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/0/U" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/0/Z" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/0/alphat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/0/epsilon" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/0/k" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/0/nut" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/0/omega" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/0/p" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/0/scaledPV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/0/sourcePV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/0/varPV" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/0/varZ" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/Allrun" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/chemkin/reactions.inp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/chemkin/therm.dat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/chemkin/transportProperties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/constant/LESProperties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/constant/PVtableProperties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/constant/chemistryProperties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/constant/combustionProperties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/constant/g" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/constant/polyMesh/boundary" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/constant/polyMesh/cellZones" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/constant/polyMesh/faceZones" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/constant/polyMesh/faces" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/constant/polyMesh/neighbour" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/constant/polyMesh/owner" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/constant/polyMesh/pointZones" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/constant/polyMesh/points" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/constant/tableProperties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/constant/thermophysicalProperties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/constant/transportProperties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/constant/turbulenceProperties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/readme" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/system/blockMeshDict" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/system/controlDict" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/system/controlDict.cold" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/system/controlDict.hot" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/system/fvSchemes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/system/fvSolution" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/my_run/MyFGM_example/Sandia chn/system/setFieldsDict" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="clangdShowErrors" value="false" />
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug-WSL" />
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="CMakeLists.txt" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/CMakeLists.txt" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/applications/MyFGMFoam/applications/solver/FGMFoam/createFields.H" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="rULEsLlA" />
+  </component>
+  <component name="McpProjectServerCommands">
+    <commands />
+    <urls />
+  </component>
+  <component name="ProjectApplicationVersion">
+    <option name="ide" value="CLion" />
+    <option name="majorVersion" value="2026" />
+    <option name="minorVersion" value="1.1" />
+    <option name="productBranch" value="Classic" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 1
+}</component>
+  <component name="ProjectId" id="3CrEq4IxQsH4vsjuv4Ifk4NVean" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "CMake 应用程序.MyFGMFoam.executor": "Debug",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RunOnceActivity.MCP Project settings loaded": "true",
+    "RunOnceActivity.RadMigrateCodeStyle": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.typescript.service.memoryLimit.init": "true",
+    "RunOnceActivity.west.config.association.type.startup.service": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "codeWithMe.voiceChat.enabledByDefault": "false",
+    "git-widget-placeholder": "shuangqing",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "org.rust.first.attach.projects": "true",
+    "settings.editor.selected.configurable": "CMakeSettings",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunManager">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
+      <method v="2">
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MyFGMFoam" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" WORKING_DIR="file://$PROJECT_DIR$/my_run/fgm_testcase" PASS_PARENT_ENVS_2="true" PROJECT_NAME="liujiayue-7" TARGET_NAME="MyFGMFoam" CONFIG_NAME="Debug-WSL" RUN_PATH="$PROJECT_DIR$/platforms/linux64GccDPInt32Debug/bin/MyFGMFoam">
+      <envs>
+        <env name="myfgm7" value="SHELL=/bin/bash WM_COMPILER=Gcc FOAM_SETTINGS=FOAMY_HEX_MESH=yes ParaView_INCLUDE_DIR=/home/liujiayue/OpenFOAM/of7/ThirdParty-7/platforms/linux64Gcc/ParaView-5.6.0/include/paraview-5.6 WSL2_GUI_APPS_ENABLED=1 WSL_DISTRO_NAME=Ubuntu WT_SESSION=04d820d6-7f42-44f3-8844-3e1e6bf6dc09 FOAM_MPI=openmpi-system ParaView_GL=mesa WM_PRECISION_OPTION=DP WM_PROJECT_USER_DIR=/home/liujiayue/OpenFOAM/of7/liujiayue-7 WM_MPLIB=SYSTEMOPENMPI FOAM_RUN=/home/liujiayue/OpenFOAM/of7/liujiayue-7/run FOAM_EXT_LIBBIN=/home/liujiayue/OpenFOAM/of7/ThirdParty-7/platforms/linux64GccDPInt32/lib NAME=DESKTOP-NET2P3U PWD=/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/src FOAMY_HEX_MESH=yes LOGNAME=liujiayue WM_OPTIONS=linux64GccDPInt32Debug WM_ARCH=linux64 ParaView_MAJOR=5.6 FOAM_TUTORIALS=/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/tutorials WM_LABEL_SIZE=32 WM_PROJECT=OpenFOAM FOAM_APPBIN=/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/platforms/linux64GccDPInt32Debug/bin WM_THIRD_PARTY_DIR=/home/liujiayue/OpenFOAM/of7/ThirdParty-7 HOME=/home/liujiayue LANG=C.UTF-8 WSL_INTEROP=/run/WSL/434_interop WM_LABEL_OPTION=Int32 WM_CC=gcc LS_COLORS=rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36: WM_CFLAGS=-m64 -fPIC FOAM_JOB_DIR=/home/liujiayue/OpenFOAM/of7/jobControl FOAM_LIBBIN=/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/platforms/linux64GccDPInt32Debug/lib WM_LINK_LANGUAGE=c++ WAYLAND_DISPLAY=wayland-0 ParaView_VERSION=5.6.0 ParaView_DIR=/home/liujiayue/OpenFOAM/of7/ThirdParty-7/platforms/linux64Gcc/ParaView-5.6.0 FOAM_ETC=/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/etc FGM_SOLVER_DIR=/home/liujiayue/OpenFOAM/of7/liujiayue-7/applications/MyFGMFoam/applications/solver FOAM_UTILITIES=/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/applications/utilities FOAM_SITE_LIBBIN=/home/liujiayue/OpenFOAM/of7/site/7/platforms/linux64GccDPInt32Debug/lib WM_OSTYPE=POSIX WM_PROJECT_VERSION=7 LESSCLOSE=/usr/bin/lesspipe %s %s WM_DIR=/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/wmake TERM=xterm-256color FOAM_SITE_APPBIN=/home/liujiayue/OpenFOAM/of7/site/7/platforms/linux64GccDPInt32Debug/bin WM_ARCH_OPTION=64 LESSOPEN=| /usr/bin/lesspipe %s USER=liujiayue WM_CXXFLAGS=-m64 -fPIC -std=c++0x MPI_ARCH_PATH=/usr/lib/x86_64-linux-gnu/openmpi WM_PROJECT_INST_DIR=/home/liujiayue/OpenFOAM/of7 FOAM_SRC=/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/src DISPLAY=:0 SHLVL=1 FOAM_USER_LIBBIN=/home/liujiayue/OpenFOAM/of7/liujiayue-7/platforms/linux64GccDPInt32Debug/lib FOAM_APP=/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/applications WM_LDFLAGS=-m64 WM_CXX=g++ LD_LIBRARY_PATH=/home/liujiayue/OpenFOAM/of7/ThirdParty-7/platforms/linux64Gcc/gperftools-svn/lib:/home/liujiayue/OpenFOAM/of7/ThirdParty-7/platforms/linux64Gcc/ParaView-5.6.0/lib/paraview-5.6:/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/platforms/linux64GccDPInt32Debug/lib/openmpi-system:/home/liujiayue/OpenFOAM/of7/ThirdParty-7/platforms/linux64GccDPInt32/lib/openmpi-system:/usr/lib/x86_64-linux-gnu/openmpi/lib:/home/liujiayue/OpenFOAM/of7/liujiayue-7/platforms/linux64GccDPInt32Debug/lib:/home/liujiayue/OpenFOAM/of7/site/7/platforms/linux64GccDPInt32Debug/lib:/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/platforms/linux64GccDPInt32Debug/lib:/home/liujiayue/OpenFOAM/of7/ThirdParty-7/platforms/linux64GccDPInt32/lib:/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/platforms/linux64GccDPInt32Debug/lib/dummy XDG_RUNTIME_DIR=/mnt/wslg/runtime-dir WM_COMPILE_OPTION=Debug FOAM_INST_DIR=/home/liujiayue/OpenFOAM/of7 WSLENV=WT_SESSION:WT_PROFILE_ID: MPI_BUFFER_SIZE=20000000 ParaView_TYPE=ThirdParty FOAM_SOLVERS=/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/applications/solvers WM_PROJECT_DIR=/home/liujiayue/OpenFOAM/of7/OpenFOAM-7 LIB_FGM_SRC=/home/liujiayue/OpenFOAM/of7/liujiayue-7/applications/MyFGMFoam/src WM_COMPILER_TYPE=system XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop FOAM_USER_APPBIN=/home/liujiayue/OpenFOAM/of7/liujiayue-7/platforms/linux64GccDPInt32Debug/bin PATH=/home/liujiayue/OpenFOAM/of7/ThirdParty-7/platforms/linux64Gcc/gperftools-svn/bin:/home/liujiayue/OpenFOAM/of7/ThirdParty-7/platforms/linux64Gcc/ParaView-5.6.0/bin:/home/liujiayue/OpenFOAM/of7/liujiayue-7/platforms/linux64GccDPInt32Debug/bin:/home/liujiayue/OpenFOAM/of7/site/7/platforms/linux64GccDPInt32Debug/bin:/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/platforms/linux64GccDPInt32Debug/bin:/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/bin:/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/wmake:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/d/Program:Files/NVIDIA:GPU:Computing:Toolkit/CUDA/v12.4/bin:/mnt/d/Program:Files/NVIDIA:GPU:Computing:Toolkit/CUDA/v12.4/libnvvp:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program:Files/Git/cmd:/mnt/d/Program:Files/MATLAB/R2022a/bin:/mnt/d/anaconda3/Library/bin/:/mnt/d/anaconda3/Scripts/:/mnt/d/anaconda3/:/mnt/d/anaconda3/Library/usr/bin/:/mnt/d/anaconda3/Library/mingw-w64/bin:/mnt/c/Program:Files/NVIDIA:Corporation/Nsight:Compute:2024.1.1/:/mnt/c/Program:Files:(x86)/NVIDIA:Corporation/PhysX/Common:/mnt/c/Program:Files/NVIDIA:Corporation/NVIDIA:NvDLISR:/mnt/c/Program:Files:(x86)/Windows:Kits/8.1/Windows:Performance:Toolkit/:/mnt/c/Program:Files:(x86)/Microsoft:Visual:Studio/2022/BuildTools/VC/Tools/MSVC/14.44.35207/bin/Hostx64/x64:/mnt/d/ProgramFiles/Docker/resources/bin:/mnt/c/Users/LJYue/AppData/Local/Microsoft/WindowsApps:/mnt/d/Program:Files/JetBrains/PyCharm:Community:Edition:2024.3.1.1/bin:/mnt/d/Users/LJYue/AppData/Local/Programs/Microsoft:VS:Code/bin:/mnt/d/Program:Files:(x86)/REFPROP/:/mnt/d/Users/LJYue/AppData/Local/Programs/CLion:2026.1.1/bin:/snap/bin PV_PLUGIN_PATH=/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/platforms/linux64GccDPInt32Debug/lib/paraview-5.6 WM_COMPILER_LIB_ARCH=64 FOAM_SIGFPE= HOSTTYPE=x86_64 PULSE_SERVER=unix:/mnt/wslg/PulseServer WT_PROFILE_ID={b72fede2-4f76-45b7-bfa2-9d7971a822dc} _=/usr/bin/env OLDPWD=/home/liujiayue/OpenFOAM/of7/OpenFOAM-7/src/meshTools" />
+      </envs>
+      <method v="2" />
+    </configuration>
+    <configuration name="MyFGMFoam" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="liujiayue-7" TARGET_NAME="MyFGMFoam" CONFIG_NAME="Debug-WSL" RUN_TARGET_PROJECT_NAME="liujiayue-7" RUN_TARGET_NAME="MyFGMFoam">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ignore_build" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="liujiayue-7" TARGET_NAME="ignore_build" CONFIG_NAME="Debug-WSL">
+      <method v="2">
+        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="默认任务">
+      <changelist id="cc4864ee-c9b7-4bca-9493-0e4be4c51a3b" name="更改" comment="" />
+      <created>1777135476213</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1777135476213</updated>
+      <workItem from="1777135478170" duration="681000" />
+      <workItem from="1777136173382" duration="1367000" />
+      <workItem from="1777137847174" duration="116000" />
+      <workItem from="1777137980445" duration="175000" />
+      <workItem from="1777138164769" duration="1018000" />
+      <workItem from="1777139202752" duration="1857000" />
+      <workItem from="1777141400438" duration="9000" />
+      <workItem from="1777141417293" duration="14914000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="VCPKGProject">
+    <isAutomaticCheckingOnLaunch value="false" />
+    <isAutomaticFoundErrors value="true" />
+    <isAutomaticReloadCMake value="true" />
+    <isAutomaticBootstrapAfterUpdate value="false" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/applications/MyFGMFoam/applications/solver/FGMFoam/FGMFoam.C</url>
+          <line>36</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/applications/MyFGMFoam/applications/solver/FGMFoam/FGMFoam.C</url>
+          <line>62</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/applications/MyFGMFoam/applications/solver/FGMFoam/FGMFoam.C</url>
+          <line>58</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/applications/MyFGMFoam/applications/solver/FGMFoam/FGMFoam.C</url>
+          <line>57</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/applications/MyFGMFoam/applications/solver/FGMFoam/createFields.H</url>
+          <line>4</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/applications/MyFGMFoam/applications/solver/FGMFoam/createFields.H</url>
+          <line>67</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/applications/MyFGMFoam/applications/solver/FGMFoam/createFields.H</url>
+          <line>91</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/applications/MyFGMFoam/applications/solver/FGMFoam/createFields.H</url>
+          <line>92</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/applications/MyFGMFoam/applications/solver/FGMFoam/createFields.H</url>
+          <line>94</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="com.jetbrains.cidr.execution.debugger.OCBreakpointType">
+          <url>file://$PROJECT_DIR$/applications/MyFGMFoam/applications/solver/FGMFoam/createFields.H</url>
+          <line>95</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
+  </component>
+</project>

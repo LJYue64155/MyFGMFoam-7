@@ -1,0 +1,1 @@
+/usr/bin/g++ -g CMakeFiles/MyFGMFoam.dir/applications/MyFGMFoam/applications/solver/FGMFoam/FGMFoam.C.o -o MyFGMFoam

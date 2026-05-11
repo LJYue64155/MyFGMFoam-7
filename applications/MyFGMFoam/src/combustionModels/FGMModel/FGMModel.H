@@ -82,6 +82,14 @@ private:
 
         //- PV tables
         PVtableSolver PVsolver_;
+
+        // Model coefficients used to calculate turbulent diffusivity
+
+        dimensionedScalar Sct_;  // Liu
+
+        // Fields (rho multiply turbulent diffusivity used in species transport equation)
+
+        // volScalarField diffusivityRhot_;
         
         //- Temperature
         volScalarField& T_;     // Added L.Ma, 02-10-2014   
@@ -96,10 +104,7 @@ private:
         volScalarField& mu_;     // Added L.Ma, 12-10-2014
         
         //- Progress variable source term
-        volScalarField& sourcePV_;
-
-        //- Scaled Progress variable
-        volScalarField& scaledPV_;
+        volScalarField& sourceYc_;
 
         //- Progress variable variance source term
         volScalarField& YWI_;
@@ -109,27 +114,30 @@ private:
 
         //- Progress variable variance source term
         volScalarField& YbWI_;
+		
+		//- Scaled Progress variable
+        volScalarField& Cmean_;
 	
-	//- Scaled Progress variable
-        volScalarField& scaledVarPV_;
+		//- Scaled Progress variable
+        volScalarField& Cfluc_;
 
-	//- Normalized mixture fraction variance
-        volScalarField& Zeta_;
+		//- Normalized mixture fraction variance
+        volScalarField& Zvar_;
 
-	//- Normalized Scaled Progress variable variance
-        volScalarField& PVeta_;	
+		//- Normalized Scaled Progress variable variance
+        volScalarField& Cvar_;	
 	
         //- Mixture fraction
-        const volScalarField& Z_;
+        const volScalarField& Zmean_;
 
         //- Mixture fraction variance
-        const volScalarField& varZ_;
+        const volScalarField& Zfluc_;
 	
         //- Progress variable
-        volScalarField& PV_;
+        volScalarField& Ycmean_;
 
         //- Progress variable variance
-        const volScalarField& varPV_;
+        const volScalarField& Ycfluc_;
 	
         //- use mixture fraction variance for interpolation switch
         Switch useProgressVariableVariance_;
@@ -163,13 +171,18 @@ public:
         //- Destructor
         virtual ~FGMModel();
 
+        virtual dimensionedScalar Sct() const  // Liu
+        {
+            return Sct_;
+        }
+
         //- Correct combustion rate
         virtual void correct();
 
         //- Correct density during PISO
         Switch correctDensity();
 
-        //- Find unscaled PV from boundary and initial conditions
+        //- Find unscaled PV (=Yc) from boundary and initial conditions
         virtual void findUscaledPV();
 
         //- Fuel consumption rate matrix 
@@ -179,7 +192,7 @@ public:
         virtual tmp<volScalarField> Qdot() const;
 
         // Progress variable source   
-        virtual tmp<volScalarField> SourcePV() const;         
+        virtual tmp<volScalarField> SourceYc() const;         
 
         //- Enthalpy source term
         inline tmp<volScalarField> Sh() const;	

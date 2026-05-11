@@ -40,6 +40,7 @@ void Foam::EddyDiffusivity<BasicTurbulenceModel>::correctNut()
 
     alphat_ = this->rho_*this->nut()/Prt_;
     alphat_.correctBoundaryConditions();
+
 }
 
 
@@ -85,7 +86,8 @@ Foam::EddyDiffusivity<BasicTurbulenceModel>::EddyDiffusivity
         ),
         this->mesh_
     )
-{}
+{
+}
 
 
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //

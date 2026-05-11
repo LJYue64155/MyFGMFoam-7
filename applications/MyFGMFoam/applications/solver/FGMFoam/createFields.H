@@ -1,3 +1,5 @@
+#include "createRDeltaT.H"
+
 Info<< "Creating combustion model\n" << endl;
 
 // The initialization of thermo changed in of6
@@ -7,22 +9,25 @@ psiReactionThermo& thermo = pThermo();
 
 const volScalarField& psi = thermo.psi();
 
-IOdictionary chemistryProperties		// senbin, 14-11-2018
-(
-    IOobject
-    (
-        "chemistryProperties",
-        runTime.constant(),
-        mesh,
-        IOobject::MUST_READ,
-        IOobject::NO_WRITE
-    )
-);
-
 // Pressure
 volScalarField& p = thermo.p();
 
+// Temperature
+volScalarField& T = thermo.T();
+
 // Density
+// volScalarField rho
+// (
+//     IOobject
+//     (
+//         "rho",
+//         runTime.timeName(),
+//         mesh,
+//         IOobject::NO_READ,
+//         IOobject::AUTO_WRITE
+//     ),
+//     thermo.rho()
+// );
 volScalarField rho
 (
     IOobject
@@ -30,7 +35,7 @@ volScalarField rho
         "rho",
         runTime.timeName(),
         mesh,
-        IOobject::NO_READ,
+        IOobject::MUST_READ,
         IOobject::AUTO_WRITE
     ),
     thermo.rho()
@@ -61,8 +66,23 @@ Info << "Creating turbulence model.\n" << nl;
 
 // Set some booleans for the turbulence models 
 bool laminarBool  = true;
-bool kEpsilonBool = false;
+bool RASBool      = false;
+// bool kEpsilonBool = false;  // L
 bool LESBool      = false;
+
+// List of all available RAS models  // L
+wordList RASModels = {"kEpsilon",
+                      "kOmega",
+                      "kOmegaSST",
+                      "kOmegaSSTLM",
+                      "kOmegaSSTSAS",
+                      "LaunderSharmaKE",
+                      "LRR",
+                      "realizableKE",
+                      "RNGkEpsilon",
+                      "SpalartAllmaras",
+                      "SSG",
+                      "v2f"};
 
 // List of all available LES models
 wordList LESModels = {"DeardorffDiffStress",
@@ -94,13 +114,13 @@ Info<< "Turbulent Model Used: " << turbModelName << endl;
 
 if (turbulence->type() != "Stokes"){ // If not laminar
     laminarBool = false;
-    if (turbulence->type() == "kEpsilon"){ // If RANS and kEpsilon
-        kEpsilonBool = true;
+    // if (turbulence->type() == "kEpsilon"){ // If RANS and kEpsilon
+        // kEpsilonBool = true;
+    if (std::find(std::begin(RASModels), std::end(RASModels), turbulence->type()) != std::end(RASModels)){
+        RASBool = true;
     }
     else if (std::find(std::begin(LESModels), std::end(LESModels), turbulence->type()) != std::end(LESModels)){ // If LES
         LESBool = true;
-
-        
     }
     else { // Only the RANS kEpsilon and all LES models work with this solver
         FatalErrorInFunction << "\nPlease provide valid turbulence model. Available models are:\n\nRANS:\tkEpsilon\nLES:\tall models" << exit(FatalError);
@@ -108,22 +128,22 @@ if (turbulence->type() != "Stokes"){ // If not laminar
 }
 
 // Mixture fraction
-volScalarField& Z = turbulence().Z();
+volScalarField& Zmean = turbulence().Zmean();
 // Mixture fraction var
-volScalarField& varZ = turbulence().varZ();
+volScalarField& Zfluc = turbulence().Zfluc();
 
 // Progress variable
-volScalarField& PV = turbulence().PV();
+volScalarField& Ycmean = turbulence().Ycmean();
 // Progress variable var
-volScalarField& varPV = turbulence().varPV();
+volScalarField& Ycfluc = turbulence().Ycfluc();
 
 // Create interpolation scheme for control variables
 multivariateSurfaceInterpolationScheme<scalar>::fieldTable fields;
 
-fields.add(Z);
-fields.add(varZ);
-fields.add(PV);
-fields.add(varPV);
+fields.add(Zmean);
+fields.add(Zfluc);
+fields.add(Ycmean);
+fields.add(Ycfluc);
 
 
 Info<< "Creating reaction model\n" << endl;
@@ -133,7 +153,6 @@ autoPtr<CombustionModel<psiReactionThermo>> reaction
 );
 const word combModelName(reaction->type());
 Info<< "Combustion Model Used: " << combModelName << endl;
-
 
 // Set the turbulence into the combustion model, exist in of2 and of4, but not exist in of6
 //reaction->setTurbulence(turbulence());
@@ -178,19 +197,19 @@ volScalarField XiZ
 );
 
 // Turbulent Schmidt number
-volScalarField Sct
-(
-    IOobject
-    (
-        "Sct",
-        runTime.timeName(),
-        mesh,
-        IOobject::READ_IF_PRESENT,
-        IOobject::NO_WRITE
-    ),
-    mesh,
-    dimensionedScalar(dimless, 0.7)
-);
+// volScalarField Sct
+// (
+//     IOobject
+//     (
+//         "Sct",
+//         runTime.timeName(),
+//         mesh,
+//         IOobject::READ_IF_PRESENT,
+//         IOobject::NO_WRITE
+//     ),
+//     mesh,
+//     dimensionedScalar(dimless, 0.7)
+// );
 
 // LES turbulent scalar dissipation model parameter
 volScalarField CEpsilon

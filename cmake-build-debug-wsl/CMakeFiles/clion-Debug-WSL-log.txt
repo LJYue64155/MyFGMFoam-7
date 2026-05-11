@@ -1,0 +1,6 @@
+/opt/cmake/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/usr/bin/make -DCMAKE_C_COMPILER=/usr/bin/gcc -DCMAKE_CXX_COMPILER=/usr/bin/g++ -G "Unix Makefiles" -S /home/liujiayue/OpenFOAM/of7/liujiayue-7 -B /home/liujiayue/OpenFOAM/of7/liujiayue-7/cmake-build-debug-wsl
+Using OpenFOAM-7
+-- Search dir: applications/MyFGMFoam/src
+-- Configuring done (0.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: /home/liujiayue/OpenFOAM/of7/liujiayue-7/cmake-build-debug-wsl

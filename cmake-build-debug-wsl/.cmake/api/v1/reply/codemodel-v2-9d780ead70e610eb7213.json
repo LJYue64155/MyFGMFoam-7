@@ -1,0 +1,70 @@
+{
+	"configurations" : 
+	[
+		{
+			"abstractTargets" : [],
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"jsonFile" : "directory-.-Debug-9ad1a58d4644cf6543fa.json",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.21"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"name" : "Debug",
+			"projects" : 
+			[
+				{
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "liujiayue-7",
+					"targetIndexes" : 
+					[
+						0,
+						1
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "MyFGMFoam::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-MyFGMFoam-Debug-0eeafe4cae7c3829ecac.json",
+					"name" : "MyFGMFoam",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 0,
+					"id" : "ignore_build::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-ignore_build-Debug-1ee8fed22e8633d33d35.json",
+					"name" : "ignore_build",
+					"projectIndex" : 0
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "/home/liujiayue/OpenFOAM/of7/liujiayue-7/cmake-build-debug-wsl",
+		"source" : "/home/liujiayue/OpenFOAM/of7/liujiayue-7"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 9
+	}
+}

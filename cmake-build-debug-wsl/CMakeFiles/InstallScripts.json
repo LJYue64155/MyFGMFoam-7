@@ -1,0 +1,7 @@
+{
+	"InstallScripts" : 
+	[
+		"/home/liujiayue/OpenFOAM/of7/liujiayue-7/cmake-build-debug-wsl/cmake_install.cmake"
+	],
+	"Parallel" : false
+}
