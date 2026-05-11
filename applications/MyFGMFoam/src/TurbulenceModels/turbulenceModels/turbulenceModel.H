@@ -75,22 +75,19 @@ protected:
         nearWallDist y_;
 
         //- Mixture Fraction []
-        volScalarField Z_;
+        volScalarField Zmean_;
 
         //- Mixture Fraction variance []
-        volScalarField varZ_;
+        volScalarField Zfluc_;
 
         //- Progress variable []
-        volScalarField PV_;                  //--- Added L.Ma, 07-10-2014
+        volScalarField Ycmean_;                  //--- Added L.Ma, 07-10-2014
 
         //- Progress variable variance []
-        volScalarField varPV_;               //--- Added L.Ma, 07-10-2014
+        volScalarField Ycfluc_;               //--- Added L.Ma, 07-10-2014
 
         //- Progress variable source []
-        volScalarField sourcePV_;            //--- Added L.Ma, 07-10-2014
-
-        //- Scaled Progress variable[]
-        volScalarField scaledPV_;            //--- Added L.Ma, 15-10-2014
+        volScalarField sourceYc_;            //--- Added L.Ma, 07-10-2014
     
         //- For PV variance source and scalar dissipation rate
         volScalarField YWI_;            //--- Added L.Ma, 06-03-2015
@@ -102,19 +99,22 @@ protected:
         volScalarField YbWI_;            //--- Added L.Ma, 06-03-2015
 
         //- Scaled Progress variable[]
-        volScalarField scaledVarPV_;            //--- Added L.Ma, 15-10-2014
+        volScalarField Cmean_;            //--- Added L.Ma, 15-10-2014
+
+        //- Scaled Progress variable[]
+        volScalarField Cfluc_;            //--- Added L.Ma, 15-10-2014
 
         //- Normalized Mixture fraction variance[]
-        volScalarField Zeta_;            //--- Added L.Ma, 06-03-2015
+        volScalarField Zvar_;            //--- Added L.Ma, 06-03-2015
 
         //- Normalized Scaled Progress variable variance[]
-        volScalarField PVeta_;            //--- Added L.Ma, 06-03-2015
+        volScalarField Cvar_;            //--- Added L.Ma, 06-03-2015
 
         //- Scalar dissipation rate of mixture fraction[1/s]
         volScalarField ChiZ_;
 
-        //- Scalar dissipation rate of mixture fraction[1/s]
-        volScalarField ChiPV_;
+        //- Scalar dissipation rate of Progress variable[1/s]
+        volScalarField ChiC_;
 
 
 private:
@@ -244,72 +244,60 @@ public:
         //- Return the Reynolds stress tensor
         virtual tmp<volSymmTensorField> R() const = 0;
 
-                //- Mixture Fraction []
+            //- Mixture Fraction []
 	        //  Non-const access allowed for transport equations
-	        virtual volScalarField& Z()
+	        virtual volScalarField& Zmean()
 	        {
-                    return Z_; 
+                    return Zmean_; 
                 } 
 	        //- Mixture Fraction []
-	        virtual const volScalarField& Z() const
+	        virtual const volScalarField& Zmean() const
 	        {
-                    return Z_; 
+                    return Zmean_; 
                 } 
 	        //  Non-const access allowed for transport equations
-	        virtual volScalarField& varZ()
+	        virtual volScalarField& Zfluc()
 	        {
-                    return varZ_; 
+                    return Zfluc_; 
                 } 
 
 	        //- Mixture Fraction []
-	        virtual const volScalarField& varZ() const		
+	        virtual const volScalarField& Zfluc() const		
 		{
-			return varZ_;
+			return Zfluc_;
 		}		
 	        
 		//- Progress variable []
-	        virtual volScalarField& PV()               //--- Added L.Ma, 07-07-2014
+	        virtual volScalarField& Ycmean()               //--- Added L.Ma, 07-07-2014
 		{
-			return PV_;
+			return Ycmean_;
 		}
 	        //- Progress variable []
-	        virtual const volScalarField& PV() const   //--- Added L.Ma, 07-07-2014
+	        virtual const volScalarField& Ycmean() const   //--- Added L.Ma, 07-07-2014
 		{
-			return PV_;
+			return Ycmean_;
 		}
 	
 	        //- Progress variable variance []
-	        virtual volScalarField& varPV()             //--- Added L.Ma, 07-07-2014
+	        virtual volScalarField& Ycfluc()             //--- Added L.Ma, 07-07-2014
  		{
-			return varPV_;
+			return Ycfluc_;
 		}	
 	        //- Progress variable variance []
-	        virtual const volScalarField& varPV() const //--- Added L.Ma, 07-07-2014
+	        virtual const volScalarField& Ycfluc() const //--- Added L.Ma, 07-07-2014
  		{
-			return varPV_;
+			return Ycfluc_;
 		}	
 	        //- Progress variable source []
-	        virtual volScalarField& sourcePV()           //--- Added L.Ma, 07-07-2014
+	        virtual volScalarField& sourceYc()           //--- Added L.Ma, 07-07-2014
  		{
-			return sourcePV_;
+			return sourceYc_;
 		}	
 
 	        //- Progress variable source []
-	        virtual const volScalarField& sourcePV() const   //--- Added L.Ma, 07-07-2014
+	        virtual const volScalarField& sourceYc() const   //--- Added L.Ma, 07-07-2014
  		{
-			return sourcePV_;
-		}	
-
-	        //- Scaled Progress variable []
-	        virtual volScalarField& scaledPV()           //--- Added L.Ma, 15-10-2014
- 		{
-			return scaledPV_;
-		}	
-
-	        //- Scaled Progress variable [] 
-	        virtual const volScalarField& scaledPV() const   //--- Added L.Ma, 15-10-2014
- 		{
-			return scaledPV_;
+			return sourceYc_;
 		}	
 
 	        //- For PV source and scalar dissipation rate []
@@ -347,40 +335,52 @@ public:
 			return YbWI_;
 		}	
 
-	        //- Scaled Progress variable []
-	        virtual volScalarField& scaledVarPV()           //--- Added L.Ma, 15-10-2014
+        	//- Scaled Progress variable []
+	        virtual volScalarField& Cmean()           //--- Added L.Ma, 15-10-2014
  		{
-			return scaledVarPV_;
+			return Cmean_;
 		}	
 
 	        //- Scaled Progress variable [] 
-	        virtual const volScalarField& scaledVarPV() const   //--- Added L.Ma, 15-10-2014
+	        virtual const volScalarField& Cmean() const   //--- Added L.Ma, 15-10-2014
  		{
-			return scaledVarPV_;
+			return Cmean_;
+		}	
+
+	        //- Scaled Progress variable []
+	        virtual volScalarField& Cfluc()           //--- Added L.Ma, 15-10-2014
+ 		{
+			return Cfluc_;
+		}	
+
+	        //- Scaled Progress variable [] 
+	        virtual const volScalarField& Cfluc() const   //--- Added L.Ma, 15-10-2014
+ 		{
+			return Cfluc_;
 		}	
 
 	        //- Normalized mixture fraction variance []
-	        virtual volScalarField& Zeta()           //--- Added L.Ma, 06-03-2015
+	        virtual volScalarField& Zvar()           //--- Added L.Ma, 06-03-2015
  		{
-			return Zeta_;
+			return Zvar_;
 		}	
 
 	        //- Normalized mixture fraction variance [] 
-	        virtual const volScalarField& Zeta() const   //--- Added L.Ma, 06-03-2015
+	        virtual const volScalarField& Zvar() const   //--- Added L.Ma, 06-03-2015
  		{
-			return Zeta_;
+			return Zvar_;
 		}	
 
 	        //- Normalized scaled Progress variable variance []
-	        virtual volScalarField& PVeta()           //--- Added L.Ma, 06-03-2015
+	        virtual volScalarField& Cvar()           //--- Added L.Ma, 06-03-2015
  		{
-			return PVeta_;
+			return Cvar_;
 		}	
 
 	        //- Normalized scaled Progress variable variance [] 
-	        virtual const volScalarField& PVeta() const   //--- Added L.Ma, 06-03-2015
+	        virtual const volScalarField& Cvar() const   //--- Added L.Ma, 06-03-2015
  		{
-			return PVeta_;
+			return Cvar_;
 		}	
 
 
@@ -397,15 +397,15 @@ public:
 		}	
 
 	        //  Non-const access allowed for transport equations
-	        virtual volScalarField& ChiPV() 
+	        virtual volScalarField& ChiC() 
  		{
-			return ChiPV_;
+			return ChiC_;
 		}	
 
 	        //- Scalar dissipation rate [1/s]
-	        virtual const volScalarField& ChiPV() const 
+	        virtual const volScalarField& ChiC() const 
  		{
-			return ChiPV_;
+			return ChiC_;
 		}	
 
         //- Validate the turbulence fields after construction
@@ -422,10 +422,10 @@ public:
         virtual void correctChiZ(); 
 
         //- Calculate the scalar dissipation rate 
-        virtual void correctChiPV(); 
+        virtual void correctChiYc(); 
 	
         //- Calculate the progress variable variance
-        virtual void correctVarPV();   
+        virtual void correctVarYc();   
 
 };
 

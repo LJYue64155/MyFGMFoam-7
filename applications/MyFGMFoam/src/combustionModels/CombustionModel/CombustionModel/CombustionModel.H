@@ -114,6 +114,12 @@ public:
         //- Return const access to the thermo package
         virtual const ReactionThermo& thermo() const = 0;
 
+        virtual dimensionedScalar Sct() const
+        {
+            return dimensionedScalar("Sct", dimless, 0.7); // 给个默认值
+        }
+
+
 
     // IO
 

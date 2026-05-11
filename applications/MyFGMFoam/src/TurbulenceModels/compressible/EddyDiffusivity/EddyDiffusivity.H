@@ -55,11 +55,11 @@ protected:
 
     // Protected data
 
-        // Model coefficients
+        // Model coefficients used to calculate alphat from nut
 
             dimensionedScalar Prt_;
 
-        // Fields
+        // Fields (turbulent thermal diffusivity)
 
             volScalarField alphat_;
 

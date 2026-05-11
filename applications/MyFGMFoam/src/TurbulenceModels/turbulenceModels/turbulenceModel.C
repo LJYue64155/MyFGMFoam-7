@@ -68,11 +68,11 @@ Foam::turbulenceModel::turbulenceModel
     phi_(phi),
     y_(mesh_),
 
-    Z_
+    Zmean_
     (
         IOobject
         (
-            "Z",
+            "Zmean",
             U.time().timeName(),
             mesh_,
             IOobject::MUST_READ,
@@ -81,11 +81,11 @@ Foam::turbulenceModel::turbulenceModel
         mesh_
     ),
 
-    varZ_
+    Zfluc_
     (
         IOobject
         (
-            "varZ",
+            "Zfluc",
             U.time().timeName(),
             mesh_,
             IOobject::MUST_READ,
@@ -94,11 +94,11 @@ Foam::turbulenceModel::turbulenceModel
         mesh_
     ),
 
-    PV_                                 //--- Added L.Ma, 07-10-2014
+    Ycmean_                                 //--- Added L.Ma, 07-10-2014
     (
         IOobject
         (
-            "PV",
+            "Ycmean",
             U.time().timeName(),
             mesh_,
             IOobject::MUST_READ,
@@ -107,11 +107,11 @@ Foam::turbulenceModel::turbulenceModel
         mesh_
     ),
 
-    varPV_
+    Ycfluc_
     (                                   //--- Added L.Ma, 07-10-2014
         IOobject
         (
-            "varPV",
+            "Ycfluc",
             U.time().timeName(),
             mesh_,
             IOobject::MUST_READ,
@@ -120,24 +120,11 @@ Foam::turbulenceModel::turbulenceModel
         mesh_
     ),
 
-    sourcePV_                          //--- Added L.Ma, 07-10-2014
+    sourceYc_                          //--- Added L.Ma, 07-10-2014
     (
         IOobject
         (
-            "sourcePV",
-            U.time().timeName(),
-            mesh_,
-            IOobject::MUST_READ,
-            IOobject::AUTO_WRITE
-        ),
-        mesh_
-    ),
-
-    scaledPV_                          //--- Added L.Ma, 07-10-2014
-    (
-        IOobject
-        (
-            "scaledPV",
+            "sourceYc",
             U.time().timeName(),
             mesh_,
             IOobject::MUST_READ,
@@ -189,46 +176,61 @@ Foam::turbulenceModel::turbulenceModel
         dimensionedScalar("YbWI", dimensionSet(1, -3, -1, 0, 0, 0, 0), 0.0)
     ),
 
-    scaledVarPV_                          //--- Added L.Ma, 07-10-2014
+    Cmean_                          //--- Added L.Ma, 07-10-2014
     (
         IOobject
         (
-            "scaledVarPV",
+            "Cmean",
             U.time().timeName(),
             mesh_,
-            IOobject::NO_READ,
-            IOobject::NO_WRITE //mb191213
+            IOobject::MUST_READ,
+            IOobject::AUTO_WRITE
         ),
-        mesh_,
-        dimensionedScalar("scaledVarPV", dimless, 0.0)
+        mesh_
     ),
 
-    Zeta_                          //--- Added L.Ma, 06-03-2015
+    Cfluc_                          //--- Added L.Ma, 07-10-2014
     (
         IOobject
         (
-            "Zeta",
+            "Cfluc",
             U.time().timeName(),
             mesh_,
             IOobject::NO_READ,
             IOobject::NO_WRITE //mb191213
         ),
         mesh_,
-        dimensionedScalar("Zeta", dimless, 0.0)
+        dimensionedScalar("Cfluc", dimless, 0.0)
     ),
 
-    PVeta_                          //--- Added L.Ma, 06-03-2015
+    
+
+    Zvar_                          //--- Added L.Ma, 06-03-2015
     (
         IOobject
         (
-            "PVeta",
+            "Zvar",
             U.time().timeName(),
             mesh_,
             IOobject::NO_READ,
             IOobject::NO_WRITE //mb191213
         ),
         mesh_,
-        dimensionedScalar("PVeta", dimless, 0.0)
+        dimensionedScalar("Zvar", dimless, 0.0)
+    ),
+
+    Cvar_                          //--- Added L.Ma, 06-03-2015
+    (
+        IOobject
+        (
+            "Cvar",
+            U.time().timeName(),
+            mesh_,
+            IOobject::NO_READ,
+            IOobject::NO_WRITE //mb191213
+        ),
+        mesh_,
+        dimensionedScalar("Cvar", dimless, 0.0)
     ),
 
     ChiZ_                          //--- Added L.Ma, 06-03-2015
@@ -245,20 +247,22 @@ Foam::turbulenceModel::turbulenceModel
         dimensionedScalar("chiZ", dimensionSet(0, 0, -1, 0, 0, 0, 0), 0.0)
     ),
 
-    ChiPV_                          //--- Added L.Ma, 06-03-2015
+    ChiC_                          //--- Added L.Ma, 06-03-2015
     (
         IOobject
         (
-            "chiPV",
+            "chiC",
             U.time().timeName(),
             mesh_,
             IOobject::NO_READ,
             IOobject::NO_WRITE
         ),
         mesh_,
-        dimensionedScalar("chiZ", dimensionSet(0, 0, -1, 0, 0, 0, 0), 0.0)
+        dimensionedScalar("chiC", dimensionSet(0, 0, -1, 0, 0, 0, 0), 0.0)
     )
-{}
+{
+    
+}
 
 
 // * * * * * * * * * * * * * * * Member Functions  * * * * * * * * * * * * * //
@@ -293,9 +297,9 @@ void Foam::turbulenceModel::correctVarZ()
 void Foam::turbulenceModel::correctChiZ()
 {}
 
-void Foam::turbulenceModel::correctChiPV()
+void Foam::turbulenceModel::correctChiYc()
 {}
 
-void Foam::turbulenceModel::correctVarPV() 
+void Foam::turbulenceModel::correctVarYc() 
 {}
 // ************************************************************************* //

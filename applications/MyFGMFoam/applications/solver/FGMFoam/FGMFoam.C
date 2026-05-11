@@ -49,6 +49,9 @@ Description
 
 int main(int argc, char *argv[])
 {
+    // #include "postProcess.H"  // L
+    // #include "postProcess.H"  // L
+
     #include "setRootCase.H"
     #include "createTime.H"
     #include "createMesh.H"
@@ -57,13 +60,20 @@ int main(int argc, char *argv[])
     #include "createTimeControls.H"
     #include "initContinuityErrs.H"
     #include "createFields.H"
+    // #include "postProcess.H"  // L
 
 //    pimpleControl pimple(mesh);
 
     turbulence->validate();
 
-    #include "compressibleCourantNo.H"
-    #include "setInitialDeltaT.H"
+    if (!LTS)  // L
+    {
+        #include "compressibleCourantNo.H"
+        #include "setInitialDeltaT.H"
+    }
+
+    // #include "compressibleCourantNo.H"  // L
+    // #include "setInitialDeltaT.H"  // L
 
     // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
@@ -72,8 +82,18 @@ int main(int argc, char *argv[])
     while (runTime.run())
     {
         #include "readTimeControls.H"
-        #include "compressibleCourantNo.H"
-        #include "setDeltaT.H"
+        // #include "compressibleCourantNo.H"  // L
+        // #include "setDeltaT.H"  // L
+
+        if (LTS)
+        {
+            #include "setRDeltaT.H"
+        }
+        else
+        {
+            #include "compressibleCourantNo.H"
+            #include "setDeltaT.H"
+        }
 
         runTime++;
         Info<< "Time = " << runTime.timeName() << nl << endl;
@@ -85,11 +105,13 @@ int main(int argc, char *argv[])
     	{
             #include "UEqn.H"
             #include "ZEqn.H" 
-            #include "PVEqn.H"
+            #include "YcEqn.H"
+            reaction->correct();
 
             if (!laminarBool){ // Only solve the variance if not laminar
-                #include "ZvarEqn.H"
-                #include "PVvarEqn.H"
+                #include "ZflucEqn.H"
+                #include "YcflucEqn.H"
+                reaction->correct();
             }
 
 	    // --- Pressure corrector loop
@@ -102,14 +124,14 @@ int main(int argc, char *argv[])
                 else
                 {
                     #include "pEqn.H"
-		}
+		        }
             }
             
 	    if (pimple.turbCorr())
             {
                 turbulence->correct();
             }
-	}
+	    }
 
     rho = thermo.rho();  
 
